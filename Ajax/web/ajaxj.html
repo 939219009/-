@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        $(function(){
+                 $("a").mouseover(function(){
+                     var index = $(this).attr("index");
+
+                     $.ajax({
+                         url: "book",
+                         type: "post",
+                         data: "index="+index,
+                         dataType: "text json",
+                         success:function (data) {
+
+                            $("#photo").attr("src",data.pic);
+                            $("#desc").html(data.desc);
+                         }
+                     });
+                     var x=event.clientX;
+                     var y=event.clientY;
+                     var tip=$("#tip");
+                     tip.css("display","block").css("left",x+10).css("top",y);
+
+                 });
+        });
+/* $(function(){
+          $("a").mouseover(function() {
+             var index=$(this).attr("index");
+              $.ajax({
+                  url: "book",
+                  type: "post",
+                  data: "index="+index,//前端向后端发出的数据
+                  dataType: "text json",//后端向前端发出的数据类型
+                  success: function (data) {//后端处理成功
+                      alert(data);
+                  }
+              });
+          });
+      });*/
+    </script>
+</head>
+<body>
+<table border="1" height="200">
+    <tr><td><a href="" index="1">Java</a></td></tr>
+    <tr><td><a href="" index="2">JavaEE</a></td></tr>
+</table>
+<div id="tip" style="position: absolute;display:none;border:1px;border-style: solid; ">
+<table id="tiptable" border="1px" bgcolor="#ffe">
+<tr align="center">
+    <td><img id="photo" src="" height="80" width="80"></td>
+</tr>
+    <tr>
+        <td><span id="desc"></span></td>
+    </tr>
+</table>
+</div>
+
+</body>
+</html>

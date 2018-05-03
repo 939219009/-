@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+     <script type="text/javascript" >
+         $(function(){
+             $("#btn").click(function(){
+                  alert($("#test").serialize())
+             });
+         });
+         $(function(){
+             $("#btn1").click(function () {
+                 var str=$("#test").serializeArray();
+                 for(var index in str){
+                     document.write(str[index].name+"--"+str[index].value+"<br/>");
+                 }
+             });
+         });
+         $(function(){
+             $("#btn2").click(function () {
+                 var s=$("#test").serialize();
+                 $("#msg").load("index.jsp",s,function(data){
+                     alert(data);
+                 });
+             });
+         });
+ </script>
+
+<form id="test">
+    用户名:
+    <input type="text" id="user" name="user">
+    <br/> <br/>
+    个人介绍:
+    <textarea id="desc" name="desc"></textarea>
+    <br/> <br/>
+    喜欢的书籍:
+    <select id="book" name="book" >
+        <option value="java">Java</option>
+        <option value="javaee">Javaee</option>
+        <option value="ajax">Ajax</option>
+    </select>
+</form>
+ <div id="msg"></div>
+ <br/>
+ <button id="btn">点击</button>
+ <br/> <br/>
+ <button id="btn1">点击</button>
+ <br/> <br/>
+ <button id="btn2">点击</button>
+</body>
+</html>

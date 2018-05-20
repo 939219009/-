@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js">
+
+    </script>
+    <script type="text/javascript" src="js/update.js">
+
+    </script>
+    <script type="text/javascript" src="js/tojson.js">
+
+    </script>
+    <script >
+
+        var QUERYID_URL="http://127.0.0.1:8080/user/queryid";//跨域
+
+        $(function() {
+
+            var str=location.href;
+            var num=str.indexOf("?");
+            str=str.substr(num+1);
+            var arr=str.split("=");
+            var id=arr[1];
+            $("#id").val(id);
+
+            $.ajax({
+                type: "GET",
+                url:QUERYID_URL+"/"+id,
+                datatype:"JSON",//后往前传json
+                statusCode:{
+                    200:function (data) {
+                       $("#username").val(data.username);
+                       $("#password").val(data.password);
+                    }
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<form id="form2">
+    <input type="hidden" id="id" name="id"/>
+    用户名：<input type="text" name="username" id="username"><br/>
+    密码：<input type="password" name="password" id="password"> <br/>
+    <input type="button" id="update" value="提交">
+</form>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+    <bean id="wym1" class="com.wym.B.wym">
+
+    </bean>
+    <bean id="java" class="com.wym.B.JavaCourse">
+        <property name="teacher" ref="wym1"/>
+     </bean>
+
+    <bean id="student" class="com.wym.B.Student">
+        <!--<constructor-arg type="long" value="1504010321"/>-->
+        <!--<constructor-arg type="java.lang.String" value="吴云明"/>-->
+        <!--<constructor-arg type="int" value="22"/>-->
+        <constructor-arg index="1" value="王字鹏"/>
+        <constructor-arg index="0" value="1504010317"/>
+        <constructor-arg index="2" value="22"/>
+    </bean>
+</beans>

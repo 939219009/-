@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url"><![CDATA[jdbc:mysql://localhost:3306/bbs?useUnicode=true&characterEncoding=utf-8]]></property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.show_sql">
+      true
+    </property>
+    <property name="hibernate.format_sql">
+      true
+    </property>
+
+    <mapping class="com.wym.po.User"/>
+    <mapping class="com.wym.po.User5"/>
+    <mapping class="com.wym.po.Hus"/>
+    <mapping class="com.wym.po.Wife"/>
+    <mapping class="com.wym.po.Father"/>
+    <mapping class="com.wym.po.Son"/>
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jsp-api" type="kotlin.js">
+    <CLASSES>
+      <root url="jar://E:/Tomcat/apache-tomcat-9.0.1-windows-x64/apache-tomcat-9.0.1/lib/servlet-api.jar!/" />
+      <root url="jar://E:/Tomcat/apache-tomcat-9.0.1-windows-x64/apache-tomcat-9.0.1/lib/jsp-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

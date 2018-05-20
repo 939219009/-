@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="mysql-connector-java-5.1.44-bin">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/mysql-connector-java-5.1.44-bin.jar!/" />
+      <root url="jar://E:/Tomcat/apache-tomcat-9.0.1-windows-x64/apache-tomcat-9.0.1/lib/jsp-api.jar!/" />
+      <root url="jar://E:/Tomcat/apache-tomcat-9.0.1-windows-x64/apache-tomcat-9.0.1/lib/servlet-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/commons-dbcp2-2.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/commons-pool2-2.4.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/c3p0-0.9.5.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/druid-1.1.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

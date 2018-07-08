@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/tojson.js"></script>
+</head>
+<body>
+   <h1>增加用户</h1>
+   <form id="form1">
+        用户名：<input type="text" name="username" id="username"><br/>
+        密码：<input type="password" name="password" id="passsword"><br/>
+   </form>
+   <button id="add">增加</button>
+   <script>
+       $("#add").click(function () {
+           var json=JSON.stringify($("#form1").serializeObject());
+           var ADD="http://127.0.0.1:8080/user/add";
+           $.ajax({
+               url:ADD,
+               type:"POST",
+               data:json,
+               contentType:"application/json",
+               statusCode:{
+                   200:function () {
+                      window.location="show.html";
+                   }
+               }
+           })
+       });
+       
+   </script>
+</body>
+</html>

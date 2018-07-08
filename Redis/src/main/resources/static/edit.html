@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/tojson.js"></script>
+</head>
+<body>
+      <h1>修改用户</h1>
+
+      <form id="form1">
+          用户名：<input type="text" name="username" id="username" ><br/>
+          密码：<input type="password" name="password" id="password" ><br/>
+          <input type="hidden" name="id" id="id"/>
+      </form>
+      <button id="edit">修改</button>
+      <script>
+
+              var t=location.href;//取得请求地址
+              var i=t.lastIndexOf("?");
+              var path=t.substring(i+1,t.length);
+              var id=path.split("=")[1];
+
+              var QUERY="http://127.0.0.1:8080/user/query";
+              $.ajax({
+                  url:QUERY+"/"+id,
+                  type:"GET",
+                  statusCode:{
+                      200:function (data) {
+                          $("#id").val(id);
+                          $("#username").val(data.username);
+                          $("#password").val(data.password);
+                      }
+                  }
+              });
+              $("#edit").click(function () {
+                  var json=JSON.stringify($("#form1").serializeObject());
+                  var UPDATE="http://127.0.0.1:8080/user/put";
+                  $.ajax({
+                      url:UPDATE,
+                      type:"PUT",
+                      data:json,
+                      contentType:"application/json",
+                      statusCode:{
+                          200:function () {
+                              window.location="show.html";
+                          }
+                      }
+                  })
+              });
+
+
+      </script>
+</body>
+</html>

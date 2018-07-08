@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/tojson.js"></script>
+</head>
+<body>
+  <h1>查询用户</h1>
+  <div id="msg">
+
+  </div>
+  <script>
+      var SHOW="http://127.0.0.1:8080/user/show";
+      $.ajax({
+          url:SHOW,
+          type:"GET",
+          dataType:"json",
+          statusCode:{
+              200:function (data) {
+                  var str="<span>用户名-----密码--------操作</span><br/>"
+                  var str1="";
+                  $("#msg").append(str);
+                  $(data).each(function (i) {
+                      var del="<a href='#' onclick='del("+data[i].id+")'>删除</a>";
+                      var update="<a href='#' onclick='update("+data[i].id+")'>修改</a>";
+                      str1+=data[i].username+"-----"+data[i].password+"&nbsp;"+update+"&nbsp;"+del+"<br/>";
+                  });
+                  $("#msg").append(str1);
+              }
+          }
+      });
+      function del(id) {
+          var DEL="http://127.0.0.1:8080/user/del";
+          $.ajax({
+              url:DEL+"/"+id,
+              type:"DELETE",
+              statusCode:{
+                  200:function () {
+                      window.location="show.html";
+                  }
+              }
+          });
+      }
+      function update(id) {
+          var QUERY="http://127.0.0.1:8080/user/query";
+          $.ajax({
+              url:QUERY+"/"+id,
+              type:"GET",
+              statusCode:{
+                  200:function (data) {
+                     window.location="edit.html?id="+data.id;
+                  }
+              }
+          });
+
+      }
+  </script>
+</body>
+</html>
